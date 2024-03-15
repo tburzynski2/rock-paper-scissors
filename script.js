@@ -1,9 +1,11 @@
 const options = ["R", "P", "S"];
-const computerChoice = options[Math.floor(Math.random() * options.length)];
 let userChoice = "";
 let playAgain = true;
+let userScore = 0;
+let computerScore = 0;
 
 while (playAgain) {
+  const computerChoice = options[Math.floor(Math.random() * options.length)];
   let validChoice = false;
   while (!validChoice) {
     userChoice = prompt(
@@ -22,16 +24,18 @@ while (playAgain) {
     (userChoice === "P" && computerChoice === "R") ||
     (userChoice === "S" && computerChoice === "P")
   ) {
+    userScore++;
     alert(
-      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}, You Win!`
+      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}\nYou Win!\nScore = User: ${userScore}, Computer: ${computerScore}`
     );
   } else if (userChoice === computerChoice) {
     alert(
-      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}, It's a tie!`
+      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}\nIt's a tie!\nScore = User: ${userScore}, Computer: ${computerScore}`
     );
   } else {
+    computerScore++;
     alert(
-      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}, Computer Wins!`
+      `Your choice: ${userChoice}, Computer's choice: ${computerChoice}\nComputer Wins!\nScore = User: ${userScore}, Computer: ${computerScore}`
     );
   }
   playAgainChoice = prompt("Would you like to play again? (Y/N)").toUpperCase();
@@ -39,3 +43,5 @@ while (playAgain) {
     playAgain = false;
   }
 }
+
+alert(`FINAL SCORE\nUser: ${userScore}, Computer: ${computerScore}`);
