@@ -10,7 +10,7 @@ while (playAgain) {
   while (!validChoice) {
     userChoice = prompt(
       "Choose rock (R), paper (P), or scissors (S)"
-    ).toUpperCase();
+    )[0].toUpperCase();
 
     validChoice = options.includes(userChoice);
 
@@ -38,7 +38,20 @@ while (playAgain) {
       `Your choice: ${userChoice}, Computer's choice: ${computerChoice}\nComputer Wins!\nScore = User: ${userScore}, Computer: ${computerScore}`
     );
   }
-  playAgainChoice = prompt("Would you like to play again? (Y/N)").toUpperCase();
+
+  let playAgainChoice = "";
+  while (!(playAgainChoice === "Y" || playAgainChoice === "N")) {
+    playAgainChoice = prompt(
+      "Would you like to play again? (Y/N)"
+    ).toUpperCase();
+
+    validChoice = options.includes(userChoice);
+
+    if (!(playAgainChoice === "Y" || playAgainChoice === "N")) {
+      alert("Invalid choice");
+    }
+  }
+
   if (playAgainChoice === "N") {
     playAgain = false;
   }
